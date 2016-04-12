@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">BaseCode 2016</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="first_frag">Hello first fragment</string>
+    <string name="second_frag">Hello second fragment</string>
+    <string name="third_frag">Hello third fragment</string>
+
+</resources>
