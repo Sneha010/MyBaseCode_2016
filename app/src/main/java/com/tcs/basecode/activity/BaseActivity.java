@@ -1,4 +1,4 @@
-package com.tcs.basecode;
+package com.tcs.basecode.activity;
 
 import android.support.v7.app.AppCompatActivity;
 
