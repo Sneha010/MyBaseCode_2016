@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="nav_drawer_labels">
+        <item>Home</item>
+        <item>Race Info</item>
+        <item>Tracking &amp; Results</item>
+        <item>Push Notification</item>
+    </string-array>
+</resources>

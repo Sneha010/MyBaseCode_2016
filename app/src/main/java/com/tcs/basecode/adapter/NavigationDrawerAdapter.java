@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -14,6 +13,7 @@ import com.tcs.basecode.R;
 import com.tcs.basecode.model.NavigationItemBean;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -21,20 +21,21 @@ import butterknife.ButterKnife;
 
 public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDrawerAdapter.ViewHolder> {
 
-    ArrayList<NavigationItemBean> data = new ArrayList<NavigationItemBean>();
+    List<NavigationItemBean> navItemList = new ArrayList<NavigationItemBean>();
+
     private LayoutInflater inflater;
     private Activity context;
     private int itemNumber;
 
-    public NavigationDrawerAdapter(Activity context, ArrayList<NavigationItemBean> data) {
+    public NavigationDrawerAdapter(Activity context, List<NavigationItemBean> navItemList) {
         this.context = context;
-        this.data = data;
+        this.navItemList = navItemList;
         inflater = LayoutInflater.from(context);
     }
 
 
     public void delete(int position) {
-        data.remove(position);
+        navItemList.remove(position);
         notifyItemRemoved(position);
     }
 
@@ -54,51 +55,73 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        NavigationItemBean current = data.get(position);
-        holder.title.setText(current.getTitle());
-        holder.title.setTextColor(context.getResources().getColor(R.color.white));
+        NavigationItemBean current = navItemList.get(position);
+        holder.mNavTitle.setText(current.getTitle());
+        holder.mNavTitle.setTextColor(context.getResources().getColor(R.color.white));
 
 
         if (position == itemNumber) {
-            if (position != 14 && position != 15) {
-                holder.rl_itemrow.setBackgroundColor(context.getResources().getColor(R.color.transGrey));
-                holder.title.setTextColor(context.getResources().getColor(R.color.white));
-            }
+            holder.mRlItemRow.setBackgroundColor(context.getResources().getColor(R.color.transGrey));
+            holder.mNavTitle.setTextColor(context.getResources().getColor(R.color.white));
         } else {
-            holder.rl_itemrow.setBackgroundColor(context.getResources().getColor(R.color.transparent));
-            holder.title.setTextColor(context.getResources().getColor(R.color.white));
+            holder.mRlItemRow.setBackgroundColor(context.getResources().getColor(R.color.transparent));
+            holder.mNavTitle.setTextColor(context.getResources().getColor(R.color.white));
 
         }
 
         switch (position) {
 
+            case 0: {
+                holder.mNavImg.setImageResource(R.drawable.ic_action_one);
+                holder.mSepLine.setVisibility(View.GONE);
+
+                break;
+            }
+            case 1: {
+                holder.mNavImg.setImageResource(R.drawable.ic_action_two);
+                holder.mSepLine.setVisibility(View.GONE);
+                break;
+            }
+            case 2: {
+                holder.mNavImg.setImageResource(R.drawable.ic_action_three);
+                holder.mSepLine.setVisibility(View.GONE);
+                break;
+            }
+            case 3: {
+                holder.mNavImg.setImageResource(R.drawable.ic_action_one);
+                holder.mSepLine.setVisibility(View.GONE);
+                break;
             }
 
+        }
 
-            }
 
+    }
 
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return navItemList.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
+
+        @Bind(R.id.navImg)
+        ImageView mNavImg;
+
         @Bind(R.id.navTitle)
-        TextView title;
+        TextView mNavTitle;
 
-        RelativeLayout rl_itemrow;
-        ImageView imageView;
-        ImageView switchPush;
-        ProgressBar progPush;
-        View line;
+        @Bind(R.id.rlItem)
+        RelativeLayout mRlItemRow;
 
+        @Bind(R.id.sepLine)
+        View mSepLine;
 
 
         public ViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this , itemView);
+            ButterKnife.bind(this, itemView);
 
         }
     }

@@ -2,7 +2,6 @@ package com.tcs.basecode.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,22 +12,32 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.RelativeLayout;
 
 import com.tcs.basecode.R;
 import com.tcs.basecode.adapter.NavigationDrawerAdapter;
 import com.tcs.basecode.model.NavigationItemBean;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 
-public class DrawerFragment extends Fragment {
+public class DrawerFragment extends BaseFragment {
 
-    private RecyclerView recyclerView;
+
+    @Bind(R.id.rlHeaderView)
+    RelativeLayout mRlHeaderView;
+
+    @Bind(R.id.drawerList)
+    RecyclerView mDrawerList;
+
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
-    private NavigationDrawerAdapter adapter;
-    private View containerView;
+    private NavigationDrawerAdapter mAdapter;
+    private View mNavigationDrawerView;
     private static String[] titles = null;
     private FragmentDrawerListener drawerListener;
     private int menuvalue = 0;
@@ -41,20 +50,24 @@ public class DrawerFragment extends Fragment {
         this.drawerListener = listener;
     }
 
-
-    public static ArrayList<NavigationItemBean> getData() {
-        ArrayList<NavigationItemBean> data = new ArrayList<NavigationItemBean>();
+    public static List<NavigationItemBean> getNavigationItemList() {
+        List<NavigationItemBean> itemList = new ArrayList<NavigationItemBean>();
 
         // preparing navigation drawer items
-
-        return data;
+        for (int i = 0; i < titles.length; i++) {
+            NavigationItemBean navItem = new NavigationItemBean();
+            navItem.setTitle(titles[i]);
+            itemList.add(navItem);
+        }
+        return itemList;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        // drawer labels
+        titles = getActivity().getResources().getStringArray(R.array.nav_drawer_labels);
     }
 
 
@@ -63,19 +76,26 @@ public class DrawerFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflating view layout
         View layout = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
-        recyclerView = (RecyclerView) layout.findViewById(R.id.drawerList);
-        adapter = new NavigationDrawerAdapter(getActivity(), getData());
+        ButterKnife.bind(this, layout);
 
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), recyclerView, new ClickListener() {
+        prepareNavItemList();
+
+        return layout;
+    }
+
+    private void prepareNavItemList() {
+        mAdapter = new NavigationDrawerAdapter(getActivity(), getNavigationItemList());
+
+        mDrawerList.setAdapter(mAdapter);
+        mDrawerList.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mDrawerList.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), mDrawerList, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
-               /* if(position!=14){
+                if(position != 3){
                     drawerListener.onDrawerItemSelected(view, position);
-                    mDrawerLayout.closeDrawer(containerView);
-                    replaceFragment(position);
-                }*/
+                    mDrawerLayout.closeDrawer(mNavigationDrawerView);
+                    updateItemPosition(position);
+                }
 
             }
 
@@ -84,20 +104,17 @@ public class DrawerFragment extends Fragment {
 
             }
         }));
-
-        return layout;
     }
 
-
     public void setUp(int fragmentId, DrawerLayout drawerLayout, final Toolbar toolbar) {
-        containerView = getActivity().findViewById(fragmentId);
+        mNavigationDrawerView = getActivity().findViewById(fragmentId);
         mDrawerLayout = drawerLayout;
         mDrawerToggle = new ActionBarDrawerToggle(getActivity(), drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
                 //MainActivity.shouldGoInvisible=true;
-               // Util.hideKeyboard(getActivity());
+                // Util.hideKeyboard(getActivity());
                 getActivity().invalidateOptionsMenu();
             }
 
@@ -112,7 +129,7 @@ public class DrawerFragment extends Fragment {
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, slideOffset);
                 toolbar.setAlpha(1 - slideOffset / 2);
-                recyclerView.smoothScrollToPosition(menuvalue);
+                mDrawerList.smoothScrollToPosition(menuvalue);
 
             }
         };
@@ -125,6 +142,12 @@ public class DrawerFragment extends Fragment {
             }
         });
 
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
     }
 
     public static interface ClickListener {
@@ -178,13 +201,13 @@ public class DrawerFragment extends Fragment {
 
     }
 
-    public void replaceFragment(int position) {
-        adapter.setPostion(position);
-        adapter.notifyDataSetChanged();
+    public void updateItemPosition(int position) {
+        mAdapter.setPostion(position);
+        mAdapter.notifyDataSetChanged();
         menuvalue = position;
     }
 
     public interface FragmentDrawerListener {
-        public void onDrawerItemSelected(View view, int position);
+        void onDrawerItemSelected(View view, int position);
     }
 }

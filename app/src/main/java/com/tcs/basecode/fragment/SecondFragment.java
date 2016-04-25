@@ -15,7 +15,10 @@ import com.tcs.basecode.R;
 public class SecondFragment extends Fragment {
 
 
-
+    public static SecondFragment newInstance() {
+        SecondFragment fragment = new SecondFragment();
+        return fragment;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

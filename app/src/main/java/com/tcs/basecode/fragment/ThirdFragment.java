@@ -14,6 +14,10 @@ import com.tcs.basecode.R;
  */
 public class ThirdFragment extends Fragment {
 
+    public static ThirdFragment newInstance() {
+        ThirdFragment fragment = new ThirdFragment();
+        return fragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

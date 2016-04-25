@@ -14,6 +14,12 @@ import com.tcs.basecode.R;
  */
 public class FirstFragment extends Fragment {
 
+    public static FirstFragment newInstance() {
+        FirstFragment fragment = new FirstFragment();
+        return fragment;
+    }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
