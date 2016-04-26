@@ -8,7 +8,7 @@ import butterknife.ButterKnife;
  * Created by Sneha Khadatare : 587823
  * on 4/25/2016.
  */
-public class BaseFragment extends Fragment{
+public abstract class BaseFragment extends Fragment{
 
     @Override
     public void onDestroy() {
@@ -16,4 +16,6 @@ public class BaseFragment extends Fragment{
 
         ButterKnife.unbind(this);
     }
+
+    public abstract String getTitle();
 }

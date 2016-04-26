@@ -9,4 +9,9 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
 
+    <!--Module Titles-->
+    <string name="first_frag_title">First Fragment</string>
+    <string name="second_frag_title">Second Fragment</string>
+    <string name="third_frag_title">Third Fragment</string>
+
 </resources>

@@ -39,7 +39,7 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
         notifyItemRemoved(position);
     }
 
-    public void setPostion(int itemNumber) {
+    public void setPosition(int itemNumber) {
         this.itemNumber = itemNumber;
     }
 
