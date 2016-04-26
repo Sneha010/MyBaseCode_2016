@@ -37,8 +37,7 @@ public class FirstFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        GeneralUtils.setToolbarStyle(getActivity() , ((MainActivity) getActivity()).getMyActionBar() ,
-                R.color.transparent , getTitle());
+
     }
 
     @Override
@@ -49,9 +48,17 @@ public class FirstFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
+
+        setUpMyToolbar();
+
+    }
+
+    private void setUpMyToolbar() {
+
         GeneralUtils.changeHamburgderIcon(getResources().getColor(R.color.colorAccent) ,
                 ((MainActivity)getActivity()).getToolbar());
-
+        GeneralUtils.setToolbarStyle(getActivity() , ((MainActivity) getActivity()).getMyActionBar() ,
+                R.color.transparent , getTitle());
     }
 
 

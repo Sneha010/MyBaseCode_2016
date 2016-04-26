@@ -13,8 +13,8 @@ import android.widget.RelativeLayout;
 
 import com.tcs.basecode.R;
 import com.tcs.basecode.adapter.NavigationDrawerAdapter;
-import com.tcs.basecode.listeners.NavigationListItemTouchListener;
 import com.tcs.basecode.model.NavigationItemBean;
+import com.tcs.basecode.widget.RecyclerViewItemTouchListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,7 +88,7 @@ public class DrawerFragment extends BaseFragment {
         mDrawerList.setAdapter(mAdapter);
         mDrawerList.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        mDrawerList.addOnItemTouchListener(new NavigationListItemTouchListener(getActivity(), new NavigationListItemTouchListener.OnItemClickListener() {
+        mDrawerList.addOnItemTouchListener(new RecyclerViewItemTouchListener(getActivity(), new RecyclerViewItemTouchListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 if (position != 3) {

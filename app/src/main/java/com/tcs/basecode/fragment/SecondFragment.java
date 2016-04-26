@@ -28,6 +28,11 @@ public class SecondFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        setUpMyToolbar();
+    }
+
+    private void setUpMyToolbar() {
+
         GeneralUtils.changeHamburgderIcon(getResources().getColor(R.color.white) ,
                 ((MainActivity)getActivity()).getToolbar());
 
@@ -46,4 +51,6 @@ public class SecondFragment extends BaseFragment {
     public String getTitle() {
         return getResources().getString(R.string.second_frag_title);
     }
+
+
 }

@@ -35,6 +35,11 @@ public class ThirdFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        setUpMyToolbar();
+    }
+
+    private void setUpMyToolbar() {
+
         GeneralUtils.changeHamburgderIcon(getResources().getColor(R.color.white) ,
                 ((MainActivity)getActivity()).getToolbar());
         GeneralUtils.setToolbarStyle(getActivity() , ((MainActivity) getActivity()).getMyActionBar() ,

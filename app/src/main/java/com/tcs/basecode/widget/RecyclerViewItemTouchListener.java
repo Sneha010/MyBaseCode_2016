@@ -1,4 +1,4 @@
-package com.tcs.basecode.listeners;
+package com.tcs.basecode.widget;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -10,7 +10,7 @@ import android.view.View;
  * Created by Sneha Khadatare : 587823
  * on 4/26/2016.
  */
-public class NavigationListItemTouchListener implements RecyclerView.OnItemTouchListener{
+public class RecyclerViewItemTouchListener implements RecyclerView.OnItemTouchListener{
 
     private final OnItemClickListener mListener;
 
@@ -20,7 +20,7 @@ public class NavigationListItemTouchListener implements RecyclerView.OnItemTouch
 
     private GestureDetector mGestureDetector;
 
-    public NavigationListItemTouchListener(Context context, OnItemClickListener listener) {
+    public RecyclerViewItemTouchListener(Context context, OnItemClickListener listener) {
         mListener = listener;
         mGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
             @Override
