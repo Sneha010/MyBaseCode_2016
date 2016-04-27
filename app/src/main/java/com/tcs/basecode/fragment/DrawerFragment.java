@@ -1,6 +1,7 @@
 package com.tcs.basecode.fragment;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,17 +14,15 @@ import android.widget.RelativeLayout;
 
 import com.tcs.basecode.R;
 import com.tcs.basecode.adapter.NavigationDrawerAdapter;
-import com.tcs.basecode.model.NavigationItemBean;
 import com.tcs.basecode.widget.RecyclerViewItemTouchListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class DrawerFragment extends BaseFragment {
+public class DrawerFragment extends Fragment {
 
 
     @Bind(R.id.rlHeaderView)
@@ -36,7 +35,7 @@ public class DrawerFragment extends BaseFragment {
     private DrawerLayout mDrawerLayout;
     private NavigationDrawerAdapter mAdapter;
     private View mNavigationDrawerView;
-    private static String[] titles = null;
+
     private FragmentDrawerListener drawerListener;
     private int menuvalue = 0;
     private int mLastSelectedPosition = 0;
@@ -49,24 +48,11 @@ public class DrawerFragment extends BaseFragment {
         this.drawerListener = listener;
     }
 
-    public static List<NavigationItemBean> getNavigationItemList() {
-        List<NavigationItemBean> itemList = new ArrayList<NavigationItemBean>();
-
-        // preparing navigation drawer items
-        for (int i = 0; i < titles.length; i++) {
-            NavigationItemBean navItem = new NavigationItemBean();
-            navItem.setTitle(titles[i]);
-            itemList.add(navItem);
-        }
-        return itemList;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // drawer labels
-        titles = getActivity().getResources().getStringArray(R.array.nav_drawer_labels);
+
     }
 
 
@@ -77,13 +63,11 @@ public class DrawerFragment extends BaseFragment {
         View layout = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
         ButterKnife.bind(this, layout);
 
-        prepareNavItemList();
-
         return layout;
     }
 
-    private void prepareNavItemList() {
-        mAdapter = new NavigationDrawerAdapter(getActivity(), getNavigationItemList());
+    public void initialiseNavigationItems(List<String> itemList) {
+        mAdapter = new NavigationDrawerAdapter(getActivity(), itemList);
 
         mDrawerList.setAdapter(mAdapter);
         mDrawerList.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -91,7 +75,7 @@ public class DrawerFragment extends BaseFragment {
         mDrawerList.addOnItemTouchListener(new RecyclerViewItemTouchListener(getActivity(), new RecyclerViewItemTouchListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                if (position != 3) {
+                if (position != 4) {
 
                     if (position != mLastSelectedPosition) {
                         drawerListener.onDrawerItemSelected(view, position);
@@ -158,12 +142,14 @@ public class DrawerFragment extends BaseFragment {
     }
 
 
-    @Override
-    public String getTitle() {
-        return null;
-    }
-
     public interface FragmentDrawerListener {
         void onDrawerItemSelected(View view, int position);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        ButterKnife.unbind(this);
     }
 }

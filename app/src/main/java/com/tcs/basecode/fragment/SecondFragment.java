@@ -49,7 +49,7 @@ public class SecondFragment extends BaseFragment {
 
     @Override
     public String getTitle() {
-        return getResources().getString(R.string.second_frag_title);
+        return getResources().getStringArray(R.array.nav_drawer_labels)[2];
     }
 
 

@@ -1,5 +1,6 @@
 package com.tcs.basecode.fragment;
 
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 
 import butterknife.ButterKnife;
@@ -17,5 +18,6 @@ public abstract class BaseFragment extends Fragment{
         ButterKnife.unbind(this);
     }
 
+    @NonNull
     public abstract String getTitle();
 }

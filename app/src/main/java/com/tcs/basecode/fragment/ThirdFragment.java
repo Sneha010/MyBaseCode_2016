@@ -48,6 +48,6 @@ public class ThirdFragment extends BaseFragment {
 
     @Override
     public String getTitle() {
-        return getResources().getString(R.string.third_frag_title);
+        return getResources().getStringArray(R.array.nav_drawer_labels)[3];
     }
 }

@@ -10,7 +10,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.tcs.basecode.R;
-import com.tcs.basecode.model.NavigationItemBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,13 +20,13 @@ import butterknife.ButterKnife;
 
 public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDrawerAdapter.ViewHolder> {
 
-    List<NavigationItemBean> navItemList = new ArrayList<NavigationItemBean>();
+    List<String> navItemList = new ArrayList<String>();
 
     private LayoutInflater inflater;
     private Activity context;
     private int itemNumber;
 
-    public NavigationDrawerAdapter(Activity context, List<NavigationItemBean> navItemList) {
+    public NavigationDrawerAdapter(Activity context, List<String> navItemList) {
         this.context = context;
         this.navItemList = navItemList;
         inflater = LayoutInflater.from(context);
@@ -55,17 +54,17 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        NavigationItemBean current = navItemList.get(position);
-        holder.mNavTitle.setText(current.getTitle());
+        String currentItem = navItemList.get(position);
+        holder.mNavTitle.setText(currentItem);
         holder.mNavTitle.setTextColor(context.getResources().getColor(R.color.white));
 
 
         if (position == itemNumber) {
-            holder.mRlItemRow.setBackgroundColor(context.getResources().getColor(R.color.transGrey));
+            holder.mRlItemRow.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
             holder.mNavTitle.setTextColor(context.getResources().getColor(R.color.white));
         } else {
             holder.mRlItemRow.setBackgroundColor(context.getResources().getColor(R.color.transparent));
-            holder.mNavTitle.setTextColor(context.getResources().getColor(R.color.white));
+            holder.mNavTitle.setTextColor(context.getResources().getColor(R.color.grey));
 
         }
 
@@ -89,6 +88,11 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
             }
             case 3: {
                 holder.mNavImg.setImageResource(R.drawable.ic_action_one);
+                holder.mSepLine.setVisibility(View.VISIBLE);
+                break;
+            }
+            case 4: {
+                holder.mNavImg.setImageResource(R.drawable.ic_action_two);
                 holder.mSepLine.setVisibility(View.GONE);
                 break;
             }

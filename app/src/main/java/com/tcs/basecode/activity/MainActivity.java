@@ -14,11 +14,15 @@ import android.widget.FrameLayout;
 
 import com.tcs.basecode.R;
 import com.tcs.basecode.fragment.DrawerFragment;
+import com.tcs.basecode.fragment.HomeFragment;
 import com.tcs.basecode.fragment.FirstFragment;
 import com.tcs.basecode.fragment.SecondFragment;
 import com.tcs.basecode.fragment.ThirdFragment;
 import com.tcs.basecode.helpers.FragmentNavigationHelper;
 import com.tcs.basecode.utilities.GeneralUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -66,18 +70,32 @@ public class MainActivity extends BaseActivity implements DrawerFragment.Fragmen
 
         setUpDrawer();
 
-        mNavigationItemNames = getResources().getStringArray(R.array.nav_drawer_labels);
         displayItemContent(0);
+
     }
 
 
     private void setUpDrawer() {
 
+        mNavigationItemNames = getResources().getStringArray(R.array.nav_drawer_labels);
+
         mDrawerFragment = (DrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigationDrawerFragment);
+        mDrawerFragment.initialiseNavigationItems(getNavigationItemList());
         mDrawerFragment.setUpDrawerToggle(navigationDrawerFragment, drawerLayout, toolbar);
 
         mDrawerFragment.setDrawerListener(this);
 
+    }
+
+    private List<String> getNavigationItemList() {
+        List<String> itemList = new ArrayList<String>();
+
+        // preparing navigation drawer items
+        for (int i = 0; i < mNavigationItemNames.length; i++) {
+
+            itemList.add(mNavigationItemNames[i]);
+        }
+        return itemList;
     }
 
     @Override
@@ -118,17 +136,23 @@ public class MainActivity extends BaseActivity implements DrawerFragment.Fragmen
 
             case 0:
 
-                fragment = FirstFragment.newInstance();
+                fragment = HomeFragment.newInstance();
 
                 break;
 
             case 1:
 
-                fragment = SecondFragment.newInstance();
+                fragment = FirstFragment.newInstance();
 
                 break;
 
             case 2:
+
+                fragment = SecondFragment.newInstance();
+
+                break;
+
+            case 3:
 
                 fragment = ThirdFragment.newInstance();
 

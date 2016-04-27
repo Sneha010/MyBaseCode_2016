@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -19,12 +17,28 @@ import com.tcs.basecode.utilities.GeneralUtils;
  */
 public class FirstFragment extends BaseFragment {
 
+
     public static FirstFragment newInstance() {
         FirstFragment fragment = new FirstFragment();
         return fragment;
     }
 
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        setUpMyToolbar();
+    }
+
+    private void setUpMyToolbar() {
+
+        GeneralUtils.changeHamburgderIcon(getResources().getColor(R.color.white) ,
+                ((MainActivity)getActivity()).getToolbar());
+
+        GeneralUtils.setToolbarStyle(getActivity() , ((MainActivity) getActivity()).getMyActionBar() ,
+                R.color.colorPrimary , getTitle());
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,38 +47,11 @@ public class FirstFragment extends BaseFragment {
         return inflater.inflate(R.layout.fragment_first_layout, container, false);
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        setUpMyToolbar();
-
-    }
-
-    private void setUpMyToolbar() {
-
-        GeneralUtils.changeHamburgderIcon(getResources().getColor(R.color.colorAccent) ,
-                ((MainActivity)getActivity()).getToolbar());
-        GeneralUtils.setToolbarStyle(getActivity() , ((MainActivity) getActivity()).getMyActionBar() ,
-                R.color.transparent , getTitle());
-    }
-
 
     @Override
     public String getTitle() {
-        return "";
+        return getResources().getStringArray(R.array.nav_drawer_labels)[1];
     }
+
 
 }
