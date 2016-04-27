@@ -1,16 +1,32 @@
 <resources>
     <string name="app_name">BaseCode 2016</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <!--Module Headers-->
+    <string name="frag_with_menu_demo_title">FragmentWithMenuDemo</string>
+    <string name="single_screen_demo_title">SingleScreenDemo</string>
+    <string name="webview_multiple_tabs_title">WebviewWithMultiTabsDemo</string>
+    <string name="webview_single_screen_title">WebviewWithSingleScreenDemo</string>
+    <string name="navigated_frag_title">NavigatedFragment</string>
+
+    <!--Content String-->
     <string name="home_frag">Hello Home fragment</string>
-    <string name="first_frag">Hello first fragment</string>
-    <string name="second_frag">Hello second fragment</string>
-    <string name="third_frag">Hello third fragment</string>
+    <string name="first_frag">Hello First fragment</string>
+    <string name="second_frag">Hello Second fragment</string>
+    <string name="third_frag">Hello Third fragment</string>
+    <string name="frag_with_menu_frag">Hello Fragments with Menu fragment</string>
+    <string name="navigated_frag">Hello Navigated fragment</string>
+    <string name="just_menu_frag">Hello Just Menu fragment</string>
+    <string name="menu_with_items_frag">Hello Menu With Items fragment</string>
+    <string name="plane_frag">Hello Plane fragment</string>
+    <string name="single_screen_demo_main_frag">Hello Single Screen Demo Main fragment</string>
+    <string name="webview_multiple_tabs_demo_main_frag">Hello Webview Multiple Tabs Demo Main fragment</string>
+    <string name="webview_reusable_frag">Hello Webview Reusable fragment</string>
+    <string name="webview_single_screen_demo_frag">Webview Single Screen Demo fragment</string>
+    <string name="mixed_frag">Hello Mixed fragment</string>
 
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>

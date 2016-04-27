@@ -15,9 +15,11 @@ import android.widget.FrameLayout;
 import com.tcs.basecode.R;
 import com.tcs.basecode.fragment.DrawerFragment;
 import com.tcs.basecode.fragment.HomeFragment;
-import com.tcs.basecode.fragment.FirstFragment;
-import com.tcs.basecode.fragment.SecondFragment;
-import com.tcs.basecode.fragment.ThirdFragment;
+import com.tcs.basecode.fragment.MenuDemoMainFragment;
+import com.tcs.basecode.fragment.MixedMainFragment;
+import com.tcs.basecode.fragment.SingleScreenDemoMainFragment;
+import com.tcs.basecode.fragment.WebviewMultipleTabsDemoMainFragment;
+import com.tcs.basecode.fragment.WebviewSingleScreenDemoFragment;
 import com.tcs.basecode.helpers.FragmentNavigationHelper;
 import com.tcs.basecode.utilities.GeneralUtils;
 
@@ -142,19 +144,31 @@ public class MainActivity extends BaseActivity implements DrawerFragment.Fragmen
 
             case 1:
 
-                fragment = FirstFragment.newInstance();
+                fragment = MenuDemoMainFragment.newInstance();
 
                 break;
 
             case 2:
 
-                fragment = SecondFragment.newInstance();
+                fragment = SingleScreenDemoMainFragment.newInstance();
 
                 break;
 
             case 3:
 
-                fragment = ThirdFragment.newInstance();
+                fragment = WebviewMultipleTabsDemoMainFragment.newInstance();
+
+                break;
+
+            case 4:
+
+                fragment = WebviewSingleScreenDemoFragment.newInstance();
+
+                break;
+
+            case 5:
+
+                fragment = MixedMainFragment.newInstance();
 
                 break;
         }

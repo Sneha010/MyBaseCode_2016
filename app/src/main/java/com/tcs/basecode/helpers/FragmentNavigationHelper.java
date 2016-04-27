@@ -33,6 +33,14 @@ public class FragmentNavigationHelper {
         fragmentTransaction.commit();
     }
 
+    public static void navigateToNextScreen(FragmentManager fragmentManager , Fragment fragment){
+
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.main_container, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
 
 
 }

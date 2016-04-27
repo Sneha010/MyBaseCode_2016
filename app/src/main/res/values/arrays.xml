@@ -2,9 +2,11 @@
 <resources>
     <string-array name="nav_drawer_labels">
         <item>Home</item>
-        <item>Race Info</item>
-        <item>Tracking &amp; Results</item>
-        <item>Social</item>
+        <item>Fragment with Menus</item>
+        <item>Single Screen</item>
+        <item>Webview Multiple Tabs</item>
+        <item>Webview Single Screen</item>
+        <item>Mixed Screen</item>
         <item>Push Notification</item>
     </string-array>
 </resources>

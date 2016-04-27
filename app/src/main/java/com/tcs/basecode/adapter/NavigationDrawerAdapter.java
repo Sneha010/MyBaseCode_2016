@@ -88,7 +88,7 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
             }
             case 3: {
                 holder.mNavImg.setImageResource(R.drawable.ic_action_one);
-                holder.mSepLine.setVisibility(View.VISIBLE);
+                holder.mSepLine.setVisibility(View.GONE);
                 break;
             }
             case 4: {
@@ -96,6 +96,17 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
                 holder.mSepLine.setVisibility(View.GONE);
                 break;
             }
+            case 5: {
+                holder.mNavImg.setImageResource(R.drawable.ic_action_two);
+                holder.mSepLine.setVisibility(View.VISIBLE);
+                break;
+            }
+            case 6: {
+                holder.mNavImg.setImageResource(R.drawable.ic_action_two);
+                holder.mSepLine.setVisibility(View.GONE);
+                break;
+            }
+
 
         }
 

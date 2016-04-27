@@ -66,7 +66,7 @@ public class DrawerFragment extends Fragment {
         return layout;
     }
 
-    public void initialiseNavigationItems(List<String> itemList) {
+    public void initialiseNavigationItems(final List<String> itemList) {
         mAdapter = new NavigationDrawerAdapter(getActivity(), itemList);
 
         mDrawerList.setAdapter(mAdapter);
@@ -75,7 +75,7 @@ public class DrawerFragment extends Fragment {
         mDrawerList.addOnItemTouchListener(new RecyclerViewItemTouchListener(getActivity(), new RecyclerViewItemTouchListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                if (position != 4) {
+                if (position != itemList.size()-1) {
 
                     if (position != mLastSelectedPosition) {
                         drawerListener.onDrawerItemSelected(view, position);

@@ -1,0 +1,24 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             >
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/single_sceen_hello_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/single_screen_demo_main_frag"
+        android:layout_centerInParent="true"/>
+
+    <Button
+        android:id="@+id/clickMeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click me"
+        android:layout_below="@+id/single_sceen_hello_msg"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>
