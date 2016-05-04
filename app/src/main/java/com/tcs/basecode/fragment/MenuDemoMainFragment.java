@@ -4,18 +4,20 @@ package com.tcs.basecode.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import com.tcs.basecode.R;
 import com.tcs.basecode.activity.MainActivity;
 import com.tcs.basecode.utilities.GeneralUtils;
 
+import java.util.ArrayList;
+
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MenuDemoMainFragment extends BaseFragment {
+public class MenuDemoMainFragment extends AbstractParentFragment {
 
 
     public static MenuDemoMainFragment newInstance() {
@@ -31,7 +33,7 @@ public class MenuDemoMainFragment extends BaseFragment {
         setUpMyToolbar();
     }
 
-    private void setUpMyToolbar() {
+    protected void setUpMyToolbar() {
 
         GeneralUtils.changeHamburgderIcon(getResources().getColor(R.color.white) ,
                 ((MainActivity)getActivity()).getToolbar());
@@ -40,13 +42,27 @@ public class MenuDemoMainFragment extends BaseFragment {
                 R.color.colorPrimary , getTitle());
     }
 
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.frag_menu_demo_main_layout, container, false);
+    public void initializeChildFragments() {
+
+        ArrayList<Fragment> fragmentList = new ArrayList<Fragment>();
+
+        fragmentList.add(JustMenuFragment.newInstance());
+        fragmentList.add(PlaneFragment.newInstance());
+        fragmentList.add(MenuWithItemsFragment.newInstance());
+
+
+        setFragment_list(fragmentList);
+
     }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+
+        Log.d("@@@@", "onCreateOptionsMenu: MenuDemoMainFragment");
+    }
 
     @Override
     public String getTitle() {

@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -52,6 +54,7 @@ public class SingleScreenDemoMainFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         ButterKnife.bind(this, view);
+        setHasOptionsMenu(true);
 
     }
 
@@ -80,6 +83,13 @@ public class SingleScreenDemoMainFragment extends BaseFragment {
         return getResources().getString(R.string.single_screen_demo_title);
     }
 
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+
+        super.onCreateOptionsMenu(menu, inflater);
+    }
 
     @Override
     public void onDestroyView() {

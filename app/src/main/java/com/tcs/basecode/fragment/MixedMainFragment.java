@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -47,6 +49,19 @@ public class MixedMainFragment extends BaseFragment {
         return inflater.inflate(R.layout.mixed_layout, container, false);
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+
+        super.onCreateOptionsMenu(menu, inflater);
+    }
 
     @Override
     public String getTitle() {

@@ -209,6 +209,7 @@ public class MainActivity extends BaseActivity implements DrawerFragment.Fragmen
             if (count > 1) {
                 if (count == 2) {
 
+                    mDrawerFragment.updateItemPosition(0);
                     getSupportFragmentManager().popBackStackImmediate();
                     GeneralUtils.setToolbarStyle(MainActivity.this, getSupportActionBar(),
                             R.color.transparent, "");

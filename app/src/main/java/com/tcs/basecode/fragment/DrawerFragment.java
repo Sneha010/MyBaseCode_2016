@@ -37,8 +37,7 @@ public class DrawerFragment extends Fragment {
     private View mNavigationDrawerView;
 
     private FragmentDrawerListener drawerListener;
-    private int menuvalue = 0;
-    private int mLastSelectedPosition = 0;
+    private int mSelectedNavItem = 0;
 
     public DrawerFragment() {
 
@@ -77,14 +76,14 @@ public class DrawerFragment extends Fragment {
             public void onItemClick(View view, int position) {
                 if (position != itemList.size()-1) {
 
-                    if (position != mLastSelectedPosition) {
+                    if (position != mSelectedNavItem) {
                         drawerListener.onDrawerItemSelected(view, position);
                         updateItemPosition(position);
                     }
                     mDrawerLayout.closeDrawer(mNavigationDrawerView);
 
                 }
-                mLastSelectedPosition = position;
+                mSelectedNavItem = position;
             }
         }));
 
@@ -112,7 +111,7 @@ public class DrawerFragment extends Fragment {
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, slideOffset);
                 toolbar.setAlpha(1 - slideOffset / 2);
-                mDrawerList.smoothScrollToPosition(menuvalue);
+                mDrawerList.smoothScrollToPosition(mSelectedNavItem);
 
             }
         };
@@ -138,7 +137,7 @@ public class DrawerFragment extends Fragment {
     public void updateItemPosition(int position) {
         mAdapter.setPosition(position);
         mAdapter.notifyDataSetChanged();
-        menuvalue = position;
+        mSelectedNavItem = position;
     }
 
 

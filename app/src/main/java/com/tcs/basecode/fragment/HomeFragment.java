@@ -34,6 +34,13 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        setHasOptionsMenu(true);
+    }
+
+    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
@@ -42,7 +49,11 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+
+        inflater.inflate(R.menu.emptymenu , menu);
         super.onCreateOptionsMenu(menu, inflater);
+
     }
 
     @Override
@@ -50,6 +61,7 @@ public class HomeFragment extends BaseFragment {
         super.onResume();
 
         setUpMyToolbar();
+        getActivity().invalidateOptionsMenu();
 
     }
 
@@ -60,6 +72,7 @@ public class HomeFragment extends BaseFragment {
         GeneralUtils.setToolbarStyle(getActivity() , ((MainActivity) getActivity()).getMyActionBar() ,
                 R.color.transparent , getTitle());
     }
+
 
 
     @Override

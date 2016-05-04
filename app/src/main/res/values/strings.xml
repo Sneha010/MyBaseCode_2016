@@ -3,6 +3,9 @@
 
     <!--Module Headers-->
     <string name="frag_with_menu_demo_title">FragmentWithMenuDemo</string>
+    <string name="just_menu_frag_tabName">Just Manu</string>
+    <string name="plane_frag_tabName">Plane</string>
+    <string name="menu_with_item_frag_tabName">Menu With Item</string>
     <string name="single_screen_demo_title">SingleScreenDemo</string>
     <string name="webview_multiple_tabs_title">WebviewWithMultiTabsDemo</string>
     <string name="webview_single_screen_title">WebviewWithSingleScreenDemo</string>
@@ -26,6 +29,11 @@
 
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
+
+    <string name="year2015">2015</string>
+    <string name="year2014">2014</string>
+    <string name="year2013">2013</string>
+    <string name="year2012">2012</string>
 
 
 
