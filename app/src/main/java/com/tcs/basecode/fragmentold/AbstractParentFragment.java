@@ -1,4 +1,4 @@
-package com.tcs.basecode.fragment;
+package com.tcs.basecode.fragmentold;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * Created by Sneha Khadatare : 587823
  * on 5/2/2016.
  */
-public abstract class AbstractParentFragment extends BaseFragment {
+public abstract class AbstractParentFragment extends BaseFragment{
 
 
     private ArrayList<Fragment> mFragmentList;

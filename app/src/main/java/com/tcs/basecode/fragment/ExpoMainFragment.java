@@ -12,41 +12,26 @@ import android.view.ViewGroup;
 
 import com.tcs.basecode.R;
 import com.tcs.basecode.activity.MainActivity;
+import com.tcs.basecode.fragmentold.BaseFragment;
 import com.tcs.basecode.utilities.GeneralUtils;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MixedMainFragment extends BaseFragment {
+public class ExpoMainFragment extends BaseFragment {
 
-
-    public static MixedMainFragment newInstance() {
-        MixedMainFragment fragment = new MixedMainFragment();
+    public static ExpoMainFragment newInstance() {
+        ExpoMainFragment fragment = new ExpoMainFragment();
         return fragment;
     }
 
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        setUpMyToolbar();
-    }
-
-    private void setUpMyToolbar() {
-
-        GeneralUtils.changeHamburgderIcon(getResources().getColor(R.color.white) ,
-                ((MainActivity)getActivity()).getToolbar());
-
-        GeneralUtils.setToolbarStyle(getActivity() , ((MainActivity) getActivity()).getMyActionBar() ,
-                R.color.colorPrimary , getTitle());
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.mixed_layout, container, false);
+        return inflater.inflate(R.layout.fragment_expo_main_layout, container, false);
     }
 
     @Override
@@ -57,16 +42,36 @@ public class MixedMainFragment extends BaseFragment {
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        menu.clear();
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
-        super.onCreateOptionsMenu(menu, inflater);
+        setUpMyToolbar();
     }
 
     @Override
-    public String getTitle() {
-        return getResources().getString(R.string.mixed_frag);
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+
+        inflater.inflate(R.menu.emptymenu , menu);
+        super.onCreateOptionsMenu(menu, inflater);
+
     }
 
+
+    protected void setUpMyToolbar() {
+
+        GeneralUtils.changeHamburgderIcon(getResources().getColor(R.color.white) ,
+                ((MainActivity)getActivity()).getToolbar());
+
+        GeneralUtils.setToolbarStyle(getActivity() , ((MainActivity) getActivity()).getMyActionBar() ,
+                R.color.colorPrimary , getTitle());
+    }
+
+
+
+    @Override
+    public String getTitle() {
+        return getResources().getString(R.string.h_expo);
+    }
 
 }

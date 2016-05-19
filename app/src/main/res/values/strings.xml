@@ -2,6 +2,16 @@
     <string name="app_name">BaseCode 2016</string>
 
     <!--Module Headers-->
+    <string name="h_events">Events</string>
+    <string name="h_tracking_and_results">Tracking &amp; Results</string>
+    <string name="h_statistics">Statistics</string>
+    <string name="h_charity">Charity</string>
+    <string name="h_social_madia">Social Media</string>
+    <string name="h_news">News</string>
+    <string name="h_weather">Weather</string>
+    <string name="h_expo">Expo</string>
+    <string name="h_info">Info</string>
+
     <string name="frag_with_menu_demo_title">FragmentWithMenuDemo</string>
     <string name="just_menu_frag_tabName">Just Manu</string>
     <string name="plane_frag_tabName">Plane</string>

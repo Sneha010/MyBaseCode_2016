@@ -13,13 +13,13 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.tcs.basecode.R;
-import com.tcs.basecode.fragment.DrawerFragment;
-import com.tcs.basecode.fragment.HomeFragment;
-import com.tcs.basecode.fragment.MenuDemoMainFragment;
-import com.tcs.basecode.fragment.MixedMainFragment;
-import com.tcs.basecode.fragment.SingleScreenDemoMainFragment;
-import com.tcs.basecode.fragment.WebviewMultipleTabsDemoMainFragment;
-import com.tcs.basecode.fragment.WebviewSingleScreenDemoFragment;
+import com.tcs.basecode.fragmentold.DrawerFragment;
+import com.tcs.basecode.fragmentold.HomeFragment;
+import com.tcs.basecode.fragmentold.MenuDemoMainFragment;
+import com.tcs.basecode.fragmentold.MixedMainFragment;
+import com.tcs.basecode.fragmentold.SingleScreenDemoMainFragment;
+import com.tcs.basecode.fragmentold.WebviewMultipleTabsDemoMainFragment;
+import com.tcs.basecode.fragmentold.WebviewSingleScreenDemoFragment;
 import com.tcs.basecode.helpers.FragmentNavigationHelper;
 import com.tcs.basecode.utilities.GeneralUtils;
 
@@ -31,7 +31,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class MainActivity extends BaseActivity implements DrawerFragment.FragmentDrawerListener {
+public class MainActivity extends NavigationDrawerActivity implements DrawerFragment.FragmentDrawerListener {
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -121,6 +121,8 @@ public class MainActivity extends BaseActivity implements DrawerFragment.Fragmen
             case android.R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START);
                 onBackPressed();
+
+
                 return true;
         }
 
@@ -139,6 +141,7 @@ public class MainActivity extends BaseActivity implements DrawerFragment.Fragmen
             case 0:
 
                 fragment = HomeFragment.newInstance();
+                //goToManu(currentItemPosition);
 
                 break;
 
@@ -221,6 +224,7 @@ public class MainActivity extends BaseActivity implements DrawerFragment.Fragmen
             } else {
                 Log.d("", "@@!! Count Inside Super call" + count);
                 finish();
+
             }
         }
 

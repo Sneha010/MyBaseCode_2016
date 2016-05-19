@@ -1,4 +1,4 @@
-package com.tcs.basecode.fragment;
+package com.tcs.basecode.fragmentold;
 
 
 import android.os.Bundle;
@@ -17,11 +17,11 @@ import com.tcs.basecode.utilities.GeneralUtils;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class WebviewMultipleTabsDemoMainFragment extends BaseFragment {
+public class NavigatedFragment extends BaseFragment {
 
 
-    public static WebviewMultipleTabsDemoMainFragment newInstance() {
-        WebviewMultipleTabsDemoMainFragment fragment = new WebviewMultipleTabsDemoMainFragment();
+    public static NavigatedFragment newInstance() {
+        NavigatedFragment fragment = new NavigatedFragment();
         return fragment;
     }
 
@@ -46,7 +46,7 @@ public class WebviewMultipleTabsDemoMainFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.webview_multiple_tabs_layout, container, false);
+        return inflater.inflate(R.layout.navigated_frag_layout, container, false);
     }
 
     @Override
@@ -55,7 +55,6 @@ public class WebviewMultipleTabsDemoMainFragment extends BaseFragment {
 
         setHasOptionsMenu(true);
     }
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.clear();
@@ -63,10 +62,9 @@ public class WebviewMultipleTabsDemoMainFragment extends BaseFragment {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-
     @Override
     public String getTitle() {
-        return getResources().getString(R.string.webview_multiple_tabs_title);
+        return getResources().getString(R.string.navigated_frag_title);
     }
 
 

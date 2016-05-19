@@ -1,4 +1,4 @@
-package com.tcs.basecode.fragment;
+package com.tcs.basecode.fragmentold;
 
 
 import android.os.Bundle;
@@ -12,26 +12,41 @@ import android.view.ViewGroup;
 
 import com.tcs.basecode.R;
 import com.tcs.basecode.activity.MainActivity;
-import com.tcs.basecode.fragmentold.BaseFragment;
 import com.tcs.basecode.utilities.GeneralUtils;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends BaseFragment {
+public class WebviewSingleScreenDemoFragment extends BaseFragment {
 
-    public static HomeFragment newInstance() {
-        HomeFragment fragment = new HomeFragment();
+
+    public static WebviewSingleScreenDemoFragment newInstance() {
+        WebviewSingleScreenDemoFragment fragment = new WebviewSingleScreenDemoFragment();
         return fragment;
     }
 
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        setUpMyToolbar();
+    }
+
+    private void setUpMyToolbar() {
+
+        GeneralUtils.changeHamburgderIcon(getResources().getColor(R.color.white) ,
+                ((MainActivity)getActivity()).getToolbar());
+
+        GeneralUtils.setToolbarStyle(getActivity() , ((MainActivity) getActivity()).getMyActionBar() ,
+                R.color.colorPrimary , getTitle());
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home_layout, container, false);
+        return inflater.inflate(R.layout.webview_single_screen_layout, container, false);
     }
 
     @Override
@@ -42,43 +57,17 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-
-    }
-
-    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.clear();
 
-        inflater.inflate(R.menu.emptymenu , menu);
         super.onCreateOptionsMenu(menu, inflater);
-
     }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        setUpMyToolbar();
-        getActivity().invalidateOptionsMenu();
-
-    }
-
-    private void setUpMyToolbar() {
-
-        GeneralUtils.changeHamburgderIcon(getResources().getColor(R.color.colorAccent) ,
-                ((MainActivity)getActivity()).getToolbar());
-        GeneralUtils.setToolbarStyle(getActivity() , ((MainActivity) getActivity()).getMyActionBar() ,
-                R.color.transparent , getTitle());
-    }
-
 
 
     @Override
     public String getTitle() {
-        return "";
+        return getResources().getString(R.string.webview_single_screen_title);
     }
+
 
 }

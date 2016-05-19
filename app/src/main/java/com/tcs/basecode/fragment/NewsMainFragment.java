@@ -12,41 +12,26 @@ import android.view.ViewGroup;
 
 import com.tcs.basecode.R;
 import com.tcs.basecode.activity.MainActivity;
+import com.tcs.basecode.fragmentold.BaseFragment;
 import com.tcs.basecode.utilities.GeneralUtils;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NavigatedFragment extends BaseFragment {
+public class NewsMainFragment extends BaseFragment {
 
-
-    public static NavigatedFragment newInstance() {
-        NavigatedFragment fragment = new NavigatedFragment();
+    public static NewsMainFragment newInstance() {
+        NewsMainFragment fragment = new NewsMainFragment();
         return fragment;
     }
 
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        setUpMyToolbar();
-    }
-
-    private void setUpMyToolbar() {
-
-        GeneralUtils.changeHamburgderIcon(getResources().getColor(R.color.white) ,
-                ((MainActivity)getActivity()).getToolbar());
-
-        GeneralUtils.setToolbarStyle(getActivity() , ((MainActivity) getActivity()).getMyActionBar() ,
-                R.color.colorPrimary , getTitle());
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.navigated_frag_layout, container, false);
+        return inflater.inflate(R.layout.fragment_news_main_layout, container, false);
     }
 
     @Override
@@ -55,17 +40,38 @@ public class NavigatedFragment extends BaseFragment {
 
         setHasOptionsMenu(true);
     }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        setUpMyToolbar();
+    }
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.clear();
 
+        inflater.inflate(R.menu.emptymenu , menu);
         super.onCreateOptionsMenu(menu, inflater);
+
     }
+
+
+    protected void setUpMyToolbar() {
+
+        GeneralUtils.changeHamburgderIcon(getResources().getColor(R.color.white) ,
+                ((MainActivity)getActivity()).getToolbar());
+
+        GeneralUtils.setToolbarStyle(getActivity() , ((MainActivity) getActivity()).getMyActionBar() ,
+                R.color.colorPrimary , getTitle());
+    }
+
+
 
     @Override
     public String getTitle() {
-        return getResources().getString(R.string.navigated_frag_title);
+        return getResources().getString(R.string.h_news);
     }
-
 
 }

@@ -18,10 +18,10 @@ import com.tcs.basecode.utilities.GeneralUtils;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends BaseFragment {
+public class InfoMainFragment extends BaseFragment {
 
-    public static HomeFragment newInstance() {
-        HomeFragment fragment = new HomeFragment();
+    public static InfoMainFragment newInstance() {
+        InfoMainFragment fragment = new InfoMainFragment();
         return fragment;
     }
 
@@ -31,7 +31,7 @@ public class HomeFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home_layout, container, false);
+        return inflater.inflate(R.layout.fragment_info_main_layout, container, false);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class HomeFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-
+        setUpMyToolbar();
     }
 
     @Override
@@ -57,28 +57,21 @@ public class HomeFragment extends BaseFragment {
 
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
 
-        setUpMyToolbar();
-        getActivity().invalidateOptionsMenu();
+    protected void setUpMyToolbar() {
 
-    }
-
-    private void setUpMyToolbar() {
-
-        GeneralUtils.changeHamburgderIcon(getResources().getColor(R.color.colorAccent) ,
+        GeneralUtils.changeHamburgderIcon(getResources().getColor(R.color.white) ,
                 ((MainActivity)getActivity()).getToolbar());
+
         GeneralUtils.setToolbarStyle(getActivity() , ((MainActivity) getActivity()).getMyActionBar() ,
-                R.color.transparent , getTitle());
+                R.color.colorPrimary , getTitle());
     }
 
 
 
     @Override
     public String getTitle() {
-        return "";
+        return getResources().getString(R.string.h_info);
     }
 
 }
