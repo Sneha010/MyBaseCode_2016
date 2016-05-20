@@ -134,6 +134,11 @@ public class DrawerFragment extends Fragment {
     }
 
 
+    public void enableDrawerHamburger(boolean isRequired) {
+
+        mDrawerToggle.setDrawerIndicatorEnabled(isRequired);
+    }
+
     public void updateItemPosition(int position) {
         mAdapter.setPosition(position);
         mAdapter.notifyDataSetChanged();

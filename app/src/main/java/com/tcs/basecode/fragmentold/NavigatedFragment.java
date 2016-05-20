@@ -42,6 +42,8 @@ public class NavigatedFragment extends BaseFragment {
                 R.color.colorPrimary , getTitle());
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

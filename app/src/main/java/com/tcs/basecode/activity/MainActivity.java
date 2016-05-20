@@ -2,6 +2,7 @@ package com.tcs.basecode.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -68,11 +69,13 @@ public class MainActivity extends NavigationDrawerActivity implements DrawerFrag
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
 
         setUpDrawer();
 
         displayItemContent(0);
+
+        addFragmentBackstackListener();
 
     }
 
@@ -229,6 +232,41 @@ public class MainActivity extends NavigationDrawerActivity implements DrawerFrag
         }
 
     }
+    private void addFragmentBackstackListener() {
+       getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+           @Override
+           public void onBackStackChanged() {
+               int count = getSupportFragmentManager().getBackStackEntryCount();
+
+               if (count <= 2) {
+
+                   //Show hamburger  : order of following method is vital
+                   getMyActionBar().setDisplayHomeAsUpEnabled(false);
+                   mDrawerFragment.enableDrawerHamburger(true);
+               }else{
+                   // show back button  : order of following method is vital
+                   mDrawerFragment.enableDrawerHamburger(false);
+                   getMyActionBar().setDisplayHomeAsUpEnabled(true);
+               }
+           }
+       });
+
+        setBackNavigationListener();
+
+
+    }
+
+    private void setBackNavigationListener() {
+        getToolbar().setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                onBackPressed();
+
+            }
+        });
+    }
+
 
     @SuppressWarnings("unused")
     @OnClick(R.id.main_container)
