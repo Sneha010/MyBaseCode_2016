@@ -120,14 +120,6 @@ public class MainActivity extends NavigationDrawerActivity implements DrawerFrag
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // The action bar home/up action should open or close the drawer.
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                drawerLayout.openDrawer(GravityCompat.START);
-                onBackPressed();
-
-
-                return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -243,28 +235,31 @@ public class MainActivity extends NavigationDrawerActivity implements DrawerFrag
                    //Show hamburger  : order of following method is vital
                    getMyActionBar().setDisplayHomeAsUpEnabled(false);
                    mDrawerFragment.enableDrawerHamburger(true);
+                   setBackNavigationListener(false);
+
                }else{
                    // show back button  : order of following method is vital
                    mDrawerFragment.enableDrawerHamburger(false);
                    getMyActionBar().setDisplayHomeAsUpEnabled(true);
+                   setBackNavigationListener(true);
                }
            }
        });
-
-        setBackNavigationListener();
-
-
     }
 
-    private void setBackNavigationListener() {
-        getToolbar().setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    private void setBackNavigationListener(final boolean isSet) {
 
-                onBackPressed();
+            getToolbar().setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(isSet)
+                        onBackPressed();
+                    else
+                        drawerLayout.openDrawer(GravityCompat.START);
+                }
+            });
 
-            }
-        });
+
     }
 
 
